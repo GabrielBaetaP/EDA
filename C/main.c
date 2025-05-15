@@ -5,20 +5,22 @@ int main() {
 
     insere(&arv, 10);
     insere(&arv, 5);
-    insere(&arv, 15);
+    insere(&arv, 9);
     insere(&arv, 2);
     insere(&arv, 7);
     insere(&arv, 12);
     insere(&arv, 18);
 
-    printarArvore(arv, 0);
+    //printarArvore(arv, 0);
 
-    printf("\n\n%d\n\n", qtdArv(arv));
+    int qtd = qtdArv(arv) - 1;
 
-    int * vet = buscOrdCre(arv);
+    int *vet = buscOrdCre(arv);
 
-    for (int i = 0; i < qtdArv(arv); i++) printf("%d ", vet[i]);
+    TABB *nova = NULL;
+    nova = arvore_balanceada(nova, vet, 0, qtd);
 
+    printarArvore(nova, 1);
 
 
     return 0;

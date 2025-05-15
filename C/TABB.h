@@ -9,10 +9,10 @@ typedef struct arvBinBusc{
     struct arvBinBusc *esq, *dir;
 }TABB;
 
-typedef struct lse {
+typedef struct lse{
     int info;
     struct lse *prox;
-};
+}TLSE;
 
 #endif
 
@@ -27,6 +27,8 @@ int qtdArv(TABB *arv);
 void auxVet(TABB *arv, int *vet, int *ind);
 
 int *buscOrdCre(TABB *arv);
+
+TABB *arvore_balanceada(TABB *arv, int vet[], int ini, int fim);
 
 
 
