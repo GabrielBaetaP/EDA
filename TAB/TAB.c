@@ -205,8 +205,15 @@ void preencher_vet_aux(TAB *arv, int *vet, int * indice) {
     (*indice)--;
 }
 
-void preencher_matriz(TAB *arv, int **mat, int *vet, int *vet_val, int qtd) {
-    if (!arv || !mat || !vet || !vet_val) return;
+// void preencher_vet_aux(TAB *arv, int *vet, int nivel) {
+//     if (!arv || !vet) return;
+//     vet[nivel]++;
+//     preencher_vet_aux(arv->esq, vet, nivel+1);
+//     preencher_vet_aux(arv->dir, vet, nivel+1);
+// }
+
+void preencher_matriz(int **mat, int *vet, int *vet_val, int qtd) {
+    if (!mat || !vet || !vet_val) return;
     int cont = 0;
     for (int i = 0; i < qtd; i++) {
         for (int j = 0; j < vet[i]; j++) {
@@ -228,7 +235,7 @@ int **matriz(TAB *arv) {
 
     int *vet_val = calloc(qtd_elem(arv),sizeof(int));
     elem_nivel(arv, vet_val);
-    preencher_matriz(arv, mat, vet_aux, vet_val, alt);
+    preencher_matriz(mat, vet_aux, vet_val, alt);
 
     for (int i = 0; i < alt; i++) {
         for (int j = 0; j < vet_aux[i]; j++) {
@@ -236,6 +243,7 @@ int **matriz(TAB *arv) {
         }
         printf("\n");
     }
+
     return mat;
 }
 

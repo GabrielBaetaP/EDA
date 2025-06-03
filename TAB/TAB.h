@@ -60,7 +60,7 @@ void elem_nivel(TAB *arv, int *aux);
 
 void preencher_vet_aux(TAB *arv, int *vet, int * indice);
 
-void preencher_matriz(TAB *arv, int **mat, int *vet, int *vet_val, int qtd);
+void preencher_matriz(int **mat, int *vet, int *vet_val, int qtd);
 
 int **matriz(TAB *arv);
 

@@ -16,8 +16,8 @@ void insere(TABB **arv, int elem){
 
 TABB *buscaNo(TABB *arv, int elem){
      if(!arv) return NULL;
-     else if(arv->info == elem) return arv;
-     else if(arv->info < elem) return buscaNo(arv->esq, elem);
+     if(arv->info == elem) return arv;
+     if(arv->info < elem) return buscaNo(arv->esq, elem);
      return buscaNo(arv->dir, elem);
 }
 
@@ -62,6 +62,44 @@ TABB *arvore_balanceada(TABB *arv, int vet[], int ini, int fim){
         arvore_balanceada(arv,vet,meio+1,fim);
     }
     return arv;
+}
+
+TABB **modelo(TABB **arv) {
+    if (!(*arv)->esq) return arv;
+    return modelo(&(*arv)->esq);
+}
+
+void remover(TABB **arv, int val) {
+    if (!*arv) return;
+
+    if ((*arv)->info == val) {
+
+        if (!(*arv)->esq && !(*arv)->dir) {
+            free(*arv);
+            *arv = NULL;
+            return;
+        }
+
+        if (!(*arv)->esq){
+            free(*arv);
+            *arv = (*arv)->dir;
+            return;
+        }
+
+        if (!(*arv)->dir) {
+            free(*arv);
+            *arv = (*arv)->esq;
+            return;
+        }
+
+        TABB **min = modelo(&(*arv)->dir);
+        (*arv)->info = (*min)->info;
+        remover(min, (*min)->info);
+        return;
+    }
+
+    if ((*arv)->info < val) remover(&(*arv)->dir, val);
+    else remover(&(*arv)->esq, val);
 }
 
 

@@ -30,6 +30,9 @@ int *buscOrdCre(TABB *arv);
 
 TABB *arvore_balanceada(TABB *arv, int vet[], int ini, int fim);
 
+TABB **modelo(TABB **arv);
+
+void remover(TABB **arv, int val);
 
 
 

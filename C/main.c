@@ -11,17 +11,21 @@ int main() {
     insere(&arv, 12);
     insere(&arv, 18);
 
-    //printarArvore(arv, 0);
+    printarArvore(arv, 0);
 
-    int qtd = qtdArv(arv) - 1;
+    printf("\n================================================\n");
 
-    int *vet = buscOrdCre(arv);
+    remover(&arv, 18);
 
-    TABB *nova = NULL;
-    nova = arvore_balanceada(nova, vet, 0, qtd);
+    printarArvore(arv, 0);
 
-    printarArvore(nova, 1);
+    printf("\n================================================\n");
 
+    remover(&arv, 5);
+
+    printarArvore(arv, 0);
+
+    printf("\n================================================\n");
 
     return 0;
 }
